@@ -1,2 +1,28 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div class="container mt-3 px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'left', newbook:@newbook, user:@user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= link_to image_tag(book.user.get_profile_image, size: "75x75"), user_path(book.user_id) %></th>
+              <td><%= link_to book.title, book_path(book.id) %></th>
+              <td><%= book.body %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

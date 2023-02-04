@@ -1,1 +1,28 @@
-<h1>Users index</h1>
+<div class="container mt-3 px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'books/left', newbook:@newbook, user:@user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">image</th>
+            <th scope="col">name</th>
+            <th></th>
+          </tr>
+
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= image_tag user.get_profile_image, size: "75x75" %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user.id) %></td>
+            </tr>
+          <% end %>
+
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
