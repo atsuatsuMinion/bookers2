@@ -1,7 +1,7 @@
 <div class="container mt-3 px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'books/left', newbook:@newbook, user:@user%>
+      <%= render 'books/left', newbook:@newbook, user:@user %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -16,7 +16,7 @@
         <tbody>
           <% @books.each do |book| %>
             <tr>
-              <td><%= image_tag book.user.profile_image, size: "75x75" %></td>
+              <td><%= link_to image_tag(book.user.get_profile_image, size: "75x75"), user_path(book.user_id) %></td>
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= book.body %></td>
             </tr>

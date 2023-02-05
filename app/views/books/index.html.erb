@@ -1,4 +1,21 @@
 <div class="container mt-3 px-5 px-sm-0">
+  <div id="error_explanation">
+    <% if @newbook.errors.any? %>
+      <h3><%= @newbook.errors.count %>
+            <% if @newbook.errors.count == 1 %>
+              error
+            <% else %>
+              errors
+            <% end %>
+            prohibited this obj from being saved:
+          </h3>
+      <ul>
+        <% @newbook.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <div class="row">
     <div class="col-md-3">
       <%= render 'left', newbook:@newbook, user:@user %>
