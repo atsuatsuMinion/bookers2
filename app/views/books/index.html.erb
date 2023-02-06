@@ -36,6 +36,20 @@
               <td><%= link_to image_tag(book.user.get_profile_image, size: "75x75"), user_path(book.user_id) %></th>
               <td><%= link_to book.title, book_path(book.id) %></th>
               <td><%= book.body %></th>
+              <% if book.favorited_by?(current_user) %>
+                <td>
+                  <%= link_to book_favorites_path(book.id), method: :delete do %>
+                    <p class="text-danger"><i class="fas fa-heart"></i><%= book.favorites.count %></p>
+                  <% end %>
+                </td>
+              <% else %>
+                <td>
+                  <%= link_to book_favorites_path(book.id), method: :post do %>
+                    <p class="text-primary"><i class="fas fa-heart" style></i><%= book.favorites.count %></p>
+                  <% end %>
+                </td>
+              <% end %>
+              <td>コメント数: <%= "#{book.book_comments.count}" %></td>
             </tr>
           <% end %>
         </tbody>
